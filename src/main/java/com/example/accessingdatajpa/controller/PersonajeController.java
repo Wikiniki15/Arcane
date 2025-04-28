@@ -3,8 +3,8 @@ package com.example.accessingdatajpa.controller;
 import com.example.accessingdatajpa.entity.Personaje;
 import com.example.accessingdatajpa.service.PersonajeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,7 +36,6 @@ public class PersonajeController {
     public ResponseEntity<Personaje> actualizarPersonaje(@PathVariable Long id, @RequestBody Personaje personajeDetalles) {
         return personajeService.actualizarPersonaje(id, personajeDetalles);
     }
-
 
     @DeleteMapping("/{id}")
     public void deletePersonaje(@PathVariable Long id) {

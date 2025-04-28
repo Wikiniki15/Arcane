@@ -3,6 +3,7 @@ package com.example.accessingdatajpa.controller;
 import com.example.accessingdatajpa.entity.Afiliacion;
 import com.example.accessingdatajpa.service.AfiliacionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,6 +30,11 @@ public class AfiliacionController {
     @PostMapping
     public Afiliacion saveAfiliacion(@RequestBody Afiliacion afiliacion) {
         return afiliacionService.saveAfiliacion(afiliacion);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Afiliacion> actualizarAfiliacion(@PathVariable Long id, @RequestBody Afiliacion afiliacionDetalles) {
+        return afiliacionService.actualizarAfiliacion(id, afiliacionDetalles);
     }
 
     @DeleteMapping("/{id}")

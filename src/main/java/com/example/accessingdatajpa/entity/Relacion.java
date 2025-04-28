@@ -1,48 +1,45 @@
 package com.example.accessingdatajpa.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Relacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_relacion;
 
-    @ManyToOne
-    @JoinColumn(name = "id_personaje_a")
-    private Personaje personajeA;
-
-    @ManyToOne
-    @JoinColumn(name = "id_personaje_b")
-    private Personaje personajeB;
-
+    private Long id_personaje_a;
+    private Long id_personaje_b;
     private String tipo_relacion;
 
     // Getters y Setters
 
-    public Long getId() {
-        return id;
+    public Long getId_relacion() {
+        return id_relacion;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_relacion(Long id_relacion) {
+        this.id_relacion = id_relacion;
     }
 
-    public Personaje getPersonajeA() {
-        return personajeA;
+    public Long getId_personaje_a() {
+        return id_personaje_a;
     }
 
-    public void setPersonajeA(Personaje personajeA) {
-        this.personajeA = personajeA;
+    public void setId_personaje_a(Long id_personaje_a) {
+        this.id_personaje_a = id_personaje_a;
     }
 
-    public Personaje getPersonajeB() {
-        return personajeB;
+    public Long getId_personaje_b() {
+        return id_personaje_b;
     }
 
-    public void setPersonajeB(Personaje personajeB) {
-        this.personajeB = personajeB;
+    public void setId_personaje_b(Long id_personaje_b) {
+        this.id_personaje_b = id_personaje_b;
     }
 
     public String getTipo_relacion() {

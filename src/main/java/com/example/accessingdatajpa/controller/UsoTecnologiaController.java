@@ -3,6 +3,7 @@ package com.example.accessingdatajpa.controller;
 import com.example.accessingdatajpa.entity.UsoTecnologia;
 import com.example.accessingdatajpa.service.UsoTecnologiaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,6 +30,11 @@ public class UsoTecnologiaController {
     @PostMapping
     public UsoTecnologia saveUsoTecnologia(@RequestBody UsoTecnologia usoTecnologia) {
         return usoTecnologiaService.saveUsoTecnologia(usoTecnologia);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UsoTecnologia> actualizarUsoTecnologia(@PathVariable Long id, @RequestBody UsoTecnologia usoDetalles) {
+        return usoTecnologiaService.actualizarUsoTecnologia(id, usoDetalles);
     }
 
     @DeleteMapping("/{id}")

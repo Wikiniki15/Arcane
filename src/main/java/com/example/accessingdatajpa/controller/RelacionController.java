@@ -3,6 +3,7 @@ package com.example.accessingdatajpa.controller;
 import com.example.accessingdatajpa.entity.Relacion;
 import com.example.accessingdatajpa.service.RelacionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,6 +30,11 @@ public class RelacionController {
     @PostMapping
     public Relacion saveRelacion(@RequestBody Relacion relacion) {
         return relacionService.saveRelacion(relacion);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Relacion> actualizarRelacion(@PathVariable Long id, @RequestBody Relacion relacionDetalles) {
+        return relacionService.actualizarRelacion(id, relacionDetalles);
     }
 
     @DeleteMapping("/{id}")

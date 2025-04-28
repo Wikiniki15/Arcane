@@ -1,50 +1,46 @@
 package com.example.accessingdatajpa.entity;
 
-import jakarta.persistence.*;
-import java.time.LocalDate;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Afiliacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_afiliacion;
 
-    @ManyToOne
-    @JoinColumn(name = "id_personaje")
-    private Personaje personaje;
-
-    @ManyToOne
-    @JoinColumn(name = "id_organizacion")
-    private Organizacion organizacion;
-
+    private Long id_personaje;
+    private Long id_organizacion;
     private String rol;
-    private LocalDate fecha_ingreso;
+    private String fecha_ingreso;
 
     // Getters y Setters
 
-    public Long getId() {
-        return id;
+    public Long getId_afiliacion() {
+        return id_afiliacion;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_afiliacion(Long id_afiliacion) {
+        this.id_afiliacion = id_afiliacion;
     }
 
-    public Personaje getPersonaje() {
-        return personaje;
+    public Long getId_personaje() {
+        return id_personaje;
     }
 
-    public void setPersonaje(Personaje personaje) {
-        this.personaje = personaje;
+    public void setId_personaje(Long id_personaje) {
+        this.id_personaje = id_personaje;
     }
 
-    public Organizacion getOrganizacion() {
-        return organizacion;
+    public Long getId_organizacion() {
+        return id_organizacion;
     }
 
-    public void setOrganizacion(Organizacion organizacion) {
-        this.organizacion = organizacion;
+    public void setId_organizacion(Long id_organizacion) {
+        this.id_organizacion = id_organizacion;
     }
 
     public String getRol() {
@@ -55,11 +51,11 @@ public class Afiliacion {
         this.rol = rol;
     }
 
-    public LocalDate getFecha_ingreso() {
+    public String getFecha_ingreso() {
         return fecha_ingreso;
     }
 
-    public void setFecha_ingreso(LocalDate fecha_ingreso) {
+    public void setFecha_ingreso(String fecha_ingreso) {
         this.fecha_ingreso = fecha_ingreso;
     }
 }

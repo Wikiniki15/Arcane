@@ -1,7 +1,9 @@
 package com.example.accessingdatajpa.entity;
 
-import jakarta.persistence.*;
-import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Organizacion {
@@ -13,9 +15,6 @@ public class Organizacion {
     private String nombre;
     private String ciudad_base;
     private String tipo;
-
-    @OneToMany(mappedBy = "organizacion", cascade = CascadeType.ALL)
-    private List<Afiliacion> afiliaciones;
 
     // Getters y Setters
 
@@ -49,13 +48,5 @@ public class Organizacion {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public List<Afiliacion> getAfiliaciones() {
-        return afiliaciones;
-    }
-
-    public void setAfiliaciones(List<Afiliacion> afiliaciones) {
-        this.afiliaciones = afiliaciones;
     }
 }

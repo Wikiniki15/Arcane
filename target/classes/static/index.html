@@ -2,128 +2,137 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Arcane</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universo de Arcane</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .tabs {
+          display: flex;
+          justify-content: center;
+          background-color: #24292e;
+          padding: 1rem;
+          gap: 1rem;
+        }
+        .tab-button {
+          background-color: white;
+          color: #24292e;
+          border: none;
+          padding: 1rem 2rem;
+          font-size: 1.2rem;
+          cursor: pointer;
+          border-radius: 8px;
+          font-weight: bold;
+        }
+        .tab-button:hover {
+          background-color: #ddd;
+        }
+        .tab-content {
+          display: none;
+          padding: 2rem;
+        }
+        .tab-content.active {
+          display: block;
+        }
+    </style>
 </head>
 <body>
 <header>
     <h1>Universo de Arcane</h1>
 </header>
-
 <main>
-    <!-- PERSONAJES -->
-    <section id="personajes">
+
+    <div class="tabs">
+        <button class="tab-button" onclick="mostrarSeccion('personajes')">Personajes</button>
+        <button class="tab-button" onclick="mostrarSeccion('organizaciones')">Organizaciones</button>
+        <button class="tab-button" onclick="mostrarSeccion('tecnologias')">Tecnologías</button>
+        <button class="tab-button" onclick="mostrarSeccion('relaciones')">Relaciones</button>
+        <button class="tab-button" onclick="mostrarSeccion('afiliaciones')">Afiliaciones</button>
+        <button class="tab-button" onclick="mostrarSeccion('usostecnologia')">Usos de Tecnología</button>
+    </div>
+
+    <section id="personajes" class="tab-content active">
         <h2>Personajes</h2>
-
-        <!-- Formulario para Crear o Actualizar -->
         <form id="form-personaje">
-            <input type="hidden" id="personaje-id"> <!-- Se llena al editar -->
+            <input type="hidden" id="personaje-id">
             <input type="text" id="nombre" placeholder="Nombre" required>
-            <input type="text" id="origen" placeholder="Origen" required>
-            <input type="text" id="rol" placeholder="Rol" required>
-            <input type="text" id="alineacion" placeholder="Alineación" required>
-            <button type="submit" id="submit-button">Agregar Personaje</button>
+            <select id="origen" required></select>
+            <input type="text" id="habilidades" placeholder="Habilidades Especiales" required>
+            <select id="alineacion" required></select>
+            <button type="submit">Guardar Personaje</button>
         </form>
-
-        <!-- Lista de personajes -->
-        <div class="card-container" id="personajes-container"></div>
+        <div id="personajes-container" class="card-container"></div>
     </section>
 
-    <!-- ORGANIZACIONES -->
-    <section id="organizaciones">
+    <section id="organizaciones" class="tab-content">
         <h2>Organizaciones</h2>
-
-        <!-- Formulario para Crear o Actualizar -->
         <form id="form-organizacion">
-            <input type="hidden" id="organizacion-id"> <!-- Se llena al editar -->
+            <input type="hidden" id="organizacion-id">
             <input type="text" id="nombre-organizacion" placeholder="Nombre" required>
-            <input type="text" id="ciudad-base" placeholder="Ciudad Base" required>
-            <input type="text" id="tipo-organizacion" placeholder="Tipo" required>
-            <button type="submit" id="submit-organizacion">Agregar Organización</button>
+            <select id="ciudad-base" required></select>
+            <select id="tipo-organizacion" required></select>
+            <button type="submit">Guardar Organización</button>
         </form>
-
-        <!-- Lista de organizaciones -->
-        <div class="card-container" id="organizaciones-container"></div>
+        <div id="organizaciones-container" class="card-container"></div>
     </section>
 
-
-    <!-- TECNOLOGIAS -->
-    <section id="tecnologias">
+    <section id="tecnologias" class="tab-content">
         <h2>Tecnologías</h2>
-
-        <!-- Formulario para Crear o Actualizar -->
         <form id="form-tecnologia">
-            <input type="hidden" id="tecnologia-id"> <!-- Se llena al editar -->
+            <input type="hidden" id="tecnologia-id">
             <input type="text" id="nombre-tecnologia" placeholder="Nombre" required>
-            <input type="text" id="tipo-tecnologia" placeholder="Tipo" required>
-            <input type="text" id="descripcion-tecnologia" placeholder="Descripción" required>
-            <button type="submit" id="submit-tecnologia">Agregar Tecnología</button>
+            <select id="tipo-tecnologia" required></select>
+            <input type="text" id="descripcion-tecnologia" placeholder="Función" required>
+            <button type="submit">Guardar Tecnología</button>
         </form>
-
-        <!-- Lista de tecnologías -->
-        <div class="card-container" id="tecnologias-container"></div>
+        <div id="tecnologias-container" class="card-container"></div>
     </section>
 
-
-    <!-- RELACIONES -->
-    <section id="relaciones">
+    <section id="relaciones" class="tab-content">
         <h2>Relaciones</h2>
-
-        <!-- Formulario para Crear o Actualizar -->
         <form id="form-relacion">
             <input type="hidden" id="relacion-id">
-            <input type="number" id="personaje-a-id" placeholder="ID Personaje A" required>
-            <input type="number" id="personaje-b-id" placeholder="ID Personaje B" required>
-            <input type="text" id="tipo-relacion" placeholder="Tipo de Relación (amistad, rivalidad...)" required>
-            <button type="submit" id="submit-relacion">Agregar Relación</button>
+            <select id="personaje-a-id" required></select>
+            <select id="personaje-b-id" required></select>
+            <select id="tipo-relacion" required></select>
+            <button type="submit">Guardar Relación</button>
         </form>
-
-        <!-- Lista de relaciones -->
-        <div class="card-container" id="relaciones-container"></div>
+        <div id="relaciones-container" class="card-container"></div>
     </section>
 
-
-    <!-- AFILIACIONES -->
-    <section id="afiliaciones">
+    <section id="afiliaciones" class="tab-content">
         <h2>Afiliaciones</h2>
-
-        <!-- Formulario para Crear o Actualizar -->
         <form id="form-afiliacion">
             <input type="hidden" id="afiliacion-id">
-            <input type="number" id="personaje-afiliacion-id" placeholder="ID Personaje" required>
-            <input type="number" id="organizacion-afiliacion-id" placeholder="ID Organización" required>
-            <input type="text" id="rol-afiliacion" placeholder="Rol dentro de la organización" required>
+            <select id="personaje-afiliacion-id" required></select>
+            <select id="organizacion-afiliacion-id" required></select>
+            <select id="rol-afiliacion" required></select>
             <input type="date" id="fecha-ingreso-afiliacion" required>
-            <button type="submit" id="submit-afiliacion">Agregar Afiliación</button>
+            <button type="submit">Guardar Afiliación</button>
         </form>
-
-        <!-- Lista de afiliaciones -->
-        <div class="card-container" id="afiliaciones-container"></div>
+        <div id="afiliaciones-container" class="card-container"></div>
     </section>
 
-
-    <!-- USOS TECNOLOGIA -->
-    <section id="usostecnologia">
+    <section id="usostecnologia" class="tab-content">
         <h2>Usos de Tecnología</h2>
-
-        <!-- Formulario para Crear o Actualizar -->
         <form id="form-uso-tecnologia">
             <input type="hidden" id="uso-tecnologia-id">
-            <input type="number" id="personaje-uso-id" placeholder="ID Personaje" required>
-            <input type="number" id="tecnologia-uso-id" placeholder="ID Tecnología" required>
-            <button type="submit" id="submit-uso-tecnologia">Agregar Uso de Tecnología</button>
+            <select id="personaje-uso-id" required></select>
+            <select id="tecnologia-uso-id" required></select>
+            <button type="submit">Guardar Uso de Tecnología</button>
         </form>
-
-        <!-- Lista de usos de tecnología -->
-        <div class="card-container" id="usostecnologia-container"></div>
+        <div id="usostecnologia-container" class="card-container"></div>
     </section>
 
 </main>
-
 <footer>
     <p>© 2025 Proyecto Arcane</p>
 </footer>
-
+<script>
+    function mostrarSeccion(id) {
+      document.querySelectorAll('.tab-content').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+</script>
 <script src="script.js"></script>
 </body>
 </html>

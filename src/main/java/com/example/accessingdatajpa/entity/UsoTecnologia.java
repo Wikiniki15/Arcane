@@ -1,45 +1,43 @@
 package com.example.accessingdatajpa.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class UsoTecnologia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_uso_tecnologia;
 
-    @ManyToOne
-    @JoinColumn(name = "id_personaje")
-    private Personaje personaje;
-
-    @ManyToOne
-    @JoinColumn(name = "id_tecnologia")
-    private Tecnologia tecnologia;
+    private Long id_personaje;
+    private Long id_tecnologia;
 
     // Getters y Setters
 
-    public Long getId() {
-        return id;
+    public Long getId_uso_tecnologia() {
+        return id_uso_tecnologia;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_uso_tecnologia(Long id_uso_tecnologia) {
+        this.id_uso_tecnologia = id_uso_tecnologia;
     }
 
-    public Personaje getPersonaje() {
-        return personaje;
+    public Long getId_personaje() {
+        return id_personaje;
     }
 
-    public void setPersonaje(Personaje personaje) {
-        this.personaje = personaje;
+    public void setId_personaje(Long id_personaje) {
+        this.id_personaje = id_personaje;
     }
 
-    public Tecnologia getTecnologia() {
-        return tecnologia;
+    public Long getId_tecnologia() {
+        return id_tecnologia;
     }
 
-    public void setTecnologia(Tecnologia tecnologia) {
-        this.tecnologia = tecnologia;
+    public void setId_tecnologia(Long id_tecnologia) {
+        this.id_tecnologia = id_tecnologia;
     }
 }
